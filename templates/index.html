@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiGPT - Chat with Wikipedia</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Add some basic styling for the new elements */
+        .input-options {
+            max-width: 800px;
+            margin: 0 auto 8px auto; /* Add margin below */
+            padding: 0 16px; /* Align with input wrapper padding */
+            display: flex;
+            flex-direction: column; /* Stack URL input and mode selector */
+            gap: 8px; /* Space between elements */
+        }
+        #wiki-url-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .mode-selector {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 10px; /* Space between radio buttons */
+            font-size: 13px;
+            color: #666;
+        }
+         .mode-selector label {
+             display: flex;
+             align-items: center;
+             gap: 4px; /* Space between radio and text */
+             cursor: pointer;
+         }
+         .mode-selector input[type="radio"] {
+             margin-right: 3px; /* Slight adjustment */
+         }
+    </style>
+    <script>
+        console.log("Page loading...");
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM content loaded");
+        });
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>WikiGPT</h1>
+            </div>
+            <div class="new-chat-btn">
+                <button id="new-chat-button" type="button">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>
+            </div>
+            <div class="chat-history" id="chat-history-list">
+                </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Deep Research Agents (Wikipedia....)/h2>
+            </div>
+
+            <div class="messages" id="messages">
+                </div>
+
+            <div class="input-container">
+                 <div class="input-options">
+                    <input type="url" id="wiki-url-input" placeholder="Optional: Paste Wikipedia URL to include in context">
+                    <div class="mode-selector">
+                        <strong>Context Mode:</strong> <label><input type="radio" name="wiki-mode" value="search" checked> Search Only</label>
+                        <label><input type="radio" name="wiki-mode" value="url_only"> My URL Only</label>
+                        <label><input type="radio" name="wiki-mode" value="both"> Both URL & Search</label>
+                    </div>
+                </div>
+
+                <form id="chat-form" onsubmit="console.log('Form submitted via onsubmit'); return false;"> <div class="input-wrapper">
+                        <textarea
+                            id="user-input"
+                            placeholder="Ask a question..."
+                            rows="1"
+                            autocomplete="off"></textarea>
+                        <button type="submit" id="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="powered-by">
+                    <p>Powered by Wikipedia + Mistral AI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
